@@ -1,12 +1,17 @@
 version: "3.7"
 
 services:
+  nginx:
+    image: nginx:1.19.0-alpine
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    ports:
+      - 80:80
+    depends_on:
+      - grafana
 
-services:
   grafana:
     image: grafana/grafana:latest
-    ports:
-      - 3000:3000
     #user: "104"
     environment:
       - GF_USERS_ALLOW_SIGN_UP=false
