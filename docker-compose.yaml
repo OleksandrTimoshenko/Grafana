@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    #user: "104"
+    environment:
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SMTP_ENABLED=true
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - grafana:/var/lib/grafana
+
+volumes:
+  grafana:
+    driver: local
